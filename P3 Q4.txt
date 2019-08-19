@@ -1,0 +1,31 @@
+INCLUDE Irvine32.inc
+
+.data
+dlist DWORD 2,5000,6000,150000,2500,150
+
+.code
+main proc
+	xor eax,eax
+	xor ebx,ebx
+	
+	mov esi,OFFSET dlist
+	mov ecx,LENGTHOF dlist
+	
+	
+L1:
+	mov ebx,[esi]
+	add eax,ebx
+	mov[esi],eax
+
+	add esi,TYPE dlist
+	loop L1
+
+	call WriteInt
+	call crlf
+
+
+	
+
+main endp
+end main
+
